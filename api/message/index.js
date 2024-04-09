@@ -16,6 +16,7 @@ app.get('/cars', (req, res) => {
 
 //get car by id
 app.get('/cars/:id', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.params.id;
     const car = cars.find(car => car.id === id);
     res.json(car);
@@ -23,6 +24,7 @@ app.get('/cars/:id', (req, res) => {
 
 //update car
 app.put('/cars/:id', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.params.id;
     const updatedCar = req.body;
     const index = cars.findIndex(car => car.id === id);
@@ -32,6 +34,7 @@ app.put('/cars/:id', (req, res) => {
 
 //delete car
 app.delete('/cars/:id', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     const id = req.params.id;
     const index = cars.findIndex(car => car.id === id);
     cars.splice(index, 1);
@@ -40,6 +43,7 @@ app.delete('/cars/:id', (req, res) => {
 
 //add car
 app.post('/cars', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     console.log(req);
     const newCar = req.body;
     console.log(newCar);
