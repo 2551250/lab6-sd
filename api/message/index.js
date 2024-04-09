@@ -1,5 +1,5 @@
 //create cars api using express
-const createHandler = require("azure-function-express").createHandler;
+const createHandler = require('azure-function-express').createHandler;
 
 const express = require('express');
 const app = express();
