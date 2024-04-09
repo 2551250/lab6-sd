@@ -11,6 +11,8 @@ const cars = require('./cars.json');
 //get all cars
 app.get('/cars', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'GET');
+    res.a
     res.json(cars);
 });
 
