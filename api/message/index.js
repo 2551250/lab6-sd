@@ -11,7 +11,7 @@ const cars = require('./cars.json');
 //get all cars
 app.get('/cars', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header('Access-Control-Allow-Methods', 'GET');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     res.json(cars);
 });
 
@@ -20,14 +20,14 @@ app.get('/cars/:id', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header('Access-Control-Allow-Methods', 'GET');
     const id = req.params.id;
-    const car = cars.find(car => car.id === id);
+    const car = cars.find(car => car.id === parseInt(id));
     res.json(car);
 });
 
 //update car
 app.put('/cars/:id', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
-    res.header('Access-Control-Allow-Methods', 'PUT');
+    res.header('Access-Control-Allow-Methods', 'GET, PUT');
     const id = req.params.id;
     const updatedCar = req.body;
     const index = cars.findIndex(car => car.id === id);
@@ -51,6 +51,7 @@ app.post('/cars', (req, res) => {
     res.header('Access-Control-Allow-Methods', 'POST');
     console.log(req);
     const newCar = req.body;
+    newCar.id = cars[cars.length - 1].id + 1,
     console.log(newCar);
     cars.push(newCar);
     res.json(newCar);
